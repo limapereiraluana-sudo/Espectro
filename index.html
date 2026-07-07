@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espectro · Desfile de Moda</title>
+  <!-- Google Fonts para um toque moderno -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0b0a0c;
+      color: #f0ece4;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* header / navegação */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #f7b2b2, #c9a7f0, #8fc7f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .logo span {
+      font-weight: 700;
+      background: none;
+      -webkit-text-fill-color: #f0ece4;
+      color: #f0ece4;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.8rem;
+      font-weight: 400;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .nav-links a {
+      color: #cbc6bc;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: #d4b8e0;
+      transition: width 0.3s;
+    }
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* hero – título principal */
+    .hero {
+      padding: 5rem 0 3.5rem;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 5rem;
+      font-weight: 300;
+      letter-spacing: 12px;
+      text-transform: uppercase;
+      background: linear-gradient(145deg, #f9e3d6, #d7b9e5, #aac7f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+    .hero .sub {
+      font-size: 1.1rem;
+      font-weight: 300;
+      letter-spacing: 6px;
+      color: #b3aaa0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: inline-block;
+      padding: 0.8rem 2.5rem;
+      backdrop-filter: blur(4px);
+    }
+
+    /* grid de destaques – coleção */
+    .collection {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 4rem 0 3rem;
+    }
+    .card {
+      background: #171518;
+      border-radius: 28px;
+      padding: 1.8rem 1.5rem 2.2rem;
+      transition: all 0.25s ease;
+      border: 1px solid #2a272b;
+      backdrop-filter: blur(2px);
+      box-shadow: 0 15px 30px -10px rgba(0,0,0,0.6);
+      text-align: center;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: #5d4d66;
+      box-shadow: 0 25px 40px -12px #0f0d10;
+      background: #1f1b20;
+    }
+    .card .emoji-big {
+      font-size: 3.5rem;
+      margin-bottom: 0.6rem;
+      display: block;
+      filter: drop-shadow(0 6px 8px #0b0a0c);
+    }
+    .card h3 {
+      font-weight: 600;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      margin-bottom: 0.3rem;
+      color: #f0ece4;
+    }
+    .card .look-tag {
+      color: #b8aec2;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: #2a262c;
+      display: inline-block;
+      padding: 0.2rem 1.2rem;
+      border-radius: 30px;
+      margin: 0.6rem 0 0.8rem;
+    }
+    .card p {
+      color: #b6ada5;
+      font-weight: 300;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* seção do desfile – data/local */
+    .showcase {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: #131113;
+      border-radius: 60px;
+      padding: 2.8rem 3.5rem;
+      margin: 4rem 0;
+      border: 1px solid #2d292e;
+      backdrop-filter: blur(4px);
+    }
+    .showcase-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .showcase-info .label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #837a84;
+    }
+    .showcase-info .event-name {
+      font-size: 2.4rem;
+      font-weight: 300;
+      letter-spacing: 6px;
+      margin: 0.2rem 0 0.4rem;
+    }
+    .showcase-info .event-name strong {
+      font-weight: 600;
+      background: linear-gradient(135deg, #eacef0, #b4d0f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .showcase-details {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .detail-item .icon {
+      font-size: 1.6rem;
+      opacity: 0.7;
+    }
+    .detail-item .info {
+      font-weight: 300;
+      color: #d4cdc4;
+    }
+    .detail-item .info strong {
+      font-weight: 600;
+      color: #f0ece4;
+    }
+
+    .btn-rsvp {
+      background: transparent;
+      border: 1px solid #756a78;
+      color: #f0ece4;
+      padding: 0.9rem 2.5rem;
+      border-radius: 60px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      transition: 0.2s;
+      cursor: default;
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(2px);
+    }
+    .btn-rsvp:hover {
+      background: #2d2530;
+      border-color: #b79fc9;
+      box-shadow: 0 0 16px #5f4b6b30;
+    }
+
+    /* galeria de looks (cores / espectro) */
+    .spectrum-gallery {
+      margin: 4rem 0 3.5rem;
+    }
+    .spectrum-gallery h2 {
+      font-weight: 300;
+      font-size: 2.2rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      background: linear-gradient(145deg, #f0d6cc, #d4bce6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.8rem;
+    }
+    .look-item {
+      background: #18161a;
+      border-radius: 40px;
+      padding: 1.8rem 1rem 1.8rem;
+      text-align: center;
+      border: 1px solid #2d282e;
+      transition: all 0.2s;
+    }
+    .look-item:hover {
+      border-color: #7f6b8a;
+      background: #201d23;
+    }
+    .look-item .color-box {
+      width: 100%;
+      height: 90px;
+      border-radius: 80px 80px 30px 30px;
+      margin-bottom: 1rem;
+      box-shadow: inset 0 -8px 8px rgba(0,0,0,0.3), 0 6px 14px rgba(0,0,0,0.7);
+    }
+    .look-item .look-name {
+      font-weight: 600;
+      letter-spacing: 1px;
+      font-size: 1.1rem;
+    }
+    .look-item .look-desc {
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: #a89f9b;
+      margin-top: 0.2rem;
+    }
+
+    /* rodapé */
+    .footer {
+      border-top: 1px solid #282328;
+      margin-top: 4.5rem;
+      padding: 2.5rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      color: #78707a;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+    .footer .copy {
+      font-size: 0.9rem;
+    }
+    .footer .socials {
+      display: flex;
+      gap: 2rem;
+    }
+    .footer .socials a {
+      color: #9a8f99;
+      text-decoration: none;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: color 0.2s;
+    }
+    .footer .socials a:hover {
+      color: #f0ece4;
+    }
+
+    /* responsividade */
+    @media (max-width: 992px) {
+      .collection { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .showcase { flex-direction: column; align-items: flex-start; gap: 2rem; }
+      .hero h1 { font-size: 3.6rem; letter-spacing: 6px; }
+    }
+    @media (max-width: 600px) {
+      .navbar { flex-direction: column; gap: 1rem; align-items: flex-start; }
+      .nav-links { flex-wrap: wrap; gap: 1.2rem; }
+      .collection { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.8rem; letter-spacing: 4px; }
+      .showcase-info .event-name { font-size: 1.8rem; }
+      .container { padding: 0 1.2rem; }
+      .showcase { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- cabeçalho + navegação -->
+    <header class="navbar">
+      <div class="logo"><span>E</span>spectro</div>
+      <div class="nav-links">
+        <a href="#">Coleção</a>
+        <a href="#">Desfile</a>
+        <a href="#">Ingressos</a>
+        <a href="#">Contato</a>
+      </div>
+    </header>
+
+    <!-- hero -->
+    <section class="hero">
+      <h1>Espectro</h1>
+      <div class="sub">DESFILE · 2026 · PRIMAVERA/VERÃO</div>
+    </section>
+
+    <!-- cards de coleção (destaques) -->
+    <div class="collection">
+      <div class="card">
+        <span class="emoji-big">🌀</span>
+        <h3>Prismático</h3>
+        <div class="look-tag">look 01</div>
+        <p>Texturas fluidas que capturam a luz em múltiplos ângulos, criando um efeito de movimento contínuo.</p>
+      </div>
+      <div class="card">
+        <span class="emoji-big">🌌</span>
+        <h3>Noturno</h3>
+        <div class="look-tag">look 04</div>
+        <p>Silhuetas escuras com detalhes em acetato e brilho sutil, inspiradas no céu estrelado.</p>
+      </div>
+      <div class="card">
+        <span class="emoji-big">🌸</span>
+        <h3>Eflorescência</h3>
+        <div class="look-tag">look 07</div>
+        <p>Estampas orgânicas e sobreposições leves que evocam o desabrochar da estação.</p>
+      </div>
+    </div>
+
+    <!-- seção central: data / local / chamada -->
+    <div class="showcase">
+      <div class="showcase-info">
+        <span class="label">✦ próximo desfile</span>
+        <div class="event-name"><strong>Espectro</strong> · passarela</div>
+        <div class="showcase-details">
+          <div class="detail-item">
+            <span class="icon">📅</span>
+            <span class="info"><strong>7 de julho</strong> · 20h</span>
+          </div>
+          <div class="detail-item">
+            <span class="icon">📍</span>
+            <span class="info"><strong>Espaço das Artes</strong> · São Paulo</span>
+          </div>
+          <div class="detail-item">
+            <span class="icon">🎫</span>
+            <span class="info"><strong>Convite</strong> · acesso restrito</span>
+          </div>
+        </div>
+      </div>
+      <div class="btn-rsvp">RSVP · lista de espera</div>
+    </div>
+
+    <!-- galeria de cores / espectro (looks) -->
+    <div class="spectrum-gallery">
+      <h2>espectro de cores</h2>
+      <div class="gallery-grid">
+        <div class="look-item">
+          <div class="color-box" style="background: linear-gradient(135deg, #f2c7c7, #e2a9c9);"></div>
+          <div class="look-name">Rosa Aurora</div>
+          <div class="look-desc">#tom suave</div>
+        </div>
+        <div class="look-item">
+          <div class="color-box" style="background: linear-gradient(135deg, #c2a6d6, #ae8fc7);"></div>
+          <div class="look-name">Lilás Neblina</div>
+          <div class="look-desc">#meio-tom</div>
+        </div>
+        <div class="look-item">
+          <div class="color-box" style="background: linear-gradient(135deg, #97b8e3, #6f9bd6);"></div>
+          <div class="look-name">Azul Céu</div>
+          <div class="look-desc">#frescor</div>
+        </div>
+        <div class="look-item">
+          <div class="color-box" style="background: linear-gradient(135deg, #d6c9a8, #c2b08a);"></div>
+          <div class="look-name">Âmbar</div>
+          <div class="look-desc">#toque terroso</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- rodapé -->
+    <footer class="footer">
+      <div class="copy">© 2026 Espectro · moda conceitual</div>
+      <div class="socials">
+        <a href="#">instagram</a>
+        <a href="#">pinterest</a>
+        <a href="#">youtube</a>
+      </div>
+    </footer>
+
+  </div>
+  <!-- fim container -->
+</body>
+</html>
